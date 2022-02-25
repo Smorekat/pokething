@@ -1,7 +1,9 @@
 # from matplotlib.pyplot import draw
+from attr import NOTHING
 import pygame as pg
 from pygame.locals import NOFRAME
 import gui
+import main
 # from gui import attackbutton as a
 
 size = width, height = (500, 500)   # set window/screen dimensions
@@ -9,9 +11,11 @@ screen = pg.display.set_mode(size, NOFRAME, 32)  # make screen
 # icon = pg.image.load("./img/icon.jpg")  # import icon 
 # pg.display.set_icon(icon)   # set icon
 running = True  # set game to run
+# name = main.name
+
 
 pg.font.init()
-button_font = pg.font.Font("./dependencies/VCR_OSD_MONO.ttf", 50)
+font = pg.font.Font("./dependencies/VCR_OSD_MONO.ttf", 50)
 
 def loop():
     screen.fill((0,0,0))
@@ -44,15 +48,19 @@ def draw_characters():
     screen.blit(character, (100, 100))
 
 def draw_buttons():
-    for button in gui.button_list:
+    global button_list
+    for button in button_list:
         pg.draw.rect(screen, button.color, button.dimensions)
-        label = button_font.render(button.text, True, (255,255,255))
+        label = font.render(button.text, True, (255,255,255))
         screen.blit(label, (button.x+35, button.y+25))
         del label
 
 def render(): 
     draw_characters()
     draw_buttons()
+    #uname = font.render(main.name, True, (255,255,255))
+    screen.blit(main.label, (80, 195))
+
 
 
 

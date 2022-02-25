@@ -31,10 +31,8 @@ def get_name():
         label = font.render(name, True, (255,255,255))
         ren.screen.blit(label, (80, 195))
         ren.display()
-        print(name)
+        # wprint(name)
     del finished, font
-    
-
 
 def start():
     pg.init()

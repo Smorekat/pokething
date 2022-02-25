@@ -8,10 +8,3 @@ class enemy():
         self.defense = defense
         self.model = model
         self.level = level
-
-    def autogen(self):
-        self.level = rng.randint(6,10) + int(p.player.level / 5)
-        self.multiplier = self.level / 8
-        self.health = rng.randint(50,120) * self.multiplier
-        self.defense = (rng.randint(0,10), rng.randint(10,15)) * self.multiplier
-        
